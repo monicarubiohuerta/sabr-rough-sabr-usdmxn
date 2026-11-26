@@ -1,0 +1,13 @@
+# Datos confidenciales: nunca se suben al repositorio
+datos/
+salidas/
+*.csv
+*.xlsx
+*.xls
+*.rds
+*.RData
+
+# Archivos de sesión de R / RStudio
+.Rhistory
+.Rapp.history
+.Rproj.user/
