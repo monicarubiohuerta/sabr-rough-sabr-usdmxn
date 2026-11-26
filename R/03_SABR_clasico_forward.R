@@ -576,7 +576,7 @@ write.csv(
 # (nov-2026) Compara la prima actualizada con el precio de Garman-Kohlhagen
 # (forma de Black sobre el forward) calculado con la volatilidad reportada,
 # el forward construido y el nocional (impbase). Cociente = 1 implica
-# consistencia exacta. Esperado: mediana ~1.02, ~52% en ±10%, ~80% en ±25%.
+# consistencia exacta. Esperado: mediana ~1.03, ~57% en ±10%, ~87% en ±25%.
 
 verificacion_prima <- base_sabr_1_forward %>%
   mutate(
@@ -601,9 +601,3 @@ verificacion_prima %>%
     pct_25       = mean(abs(cociente - 1) < 0.25)
   )
 
-# Institución(es) que reportan una sola volatilidad para muchas operaciones
-base_sabr_1_forward %>%
-  group_by(inst) %>%
-  summarise(n = n(), n_vol = n_distinct(iv_obs), n_strikes = n_distinct(strike),
-            .groups = "drop") %>%
-  filter(n_vol == 1, n > 50)
